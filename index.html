@@ -1,0 +1,65 @@
+<html>
+<head>
+<script lang="javascript">
+window.addEventListener("load", main)
+var D1, P1, Z, P, S, H, E, Y, A, I, Q, D
+function init()
+{
+D1=0
+P1=0
+Z=0     // Year
+P=95    // Population
+S=2800  // Stored bushels
+H=3000  // Harvested bushels
+E=H-S   // What the rats ate
+Y=3     // Bushels per acre
+A=H/Y   // Acres of land
+I=5     // Incoming People
+Q=1
+D=0     // Deaths
+}
+function report() 
+{
+    var sReport
+    Z=Z+1
+    sReport = "Hammurabi, I beg to report to you:"+"<br>"
+    sReport+= "In year "+Z+", "+D+" people starved."+"<br>"
+    sReport+= I+" people came to the city."+"<br>"
+    P=P+I
+    if (Q<0) {
+        sReport+="A horrible plague struck. Half the people died."
+        P=Math.floor(P/2)
+    }
+    sReport+="Population is now "+P+"."+"<br>"
+    sReport+="The city now owns "+A+" acres."+"<br>"
+    sReport+="You harvested "+Y+" bushels per acre."+"<br>"
+    sReport+="Rats ate "+E+" bushels."+"<br>"
+    sReport+="You now have "+S+" bushels in store."+"<br>"
+    dvReport.innerHTML=sReport
+    if (Z==11) endGame()
+}
+function update() {
+var C
+    C=Math.floor(10*Math.random())
+    Y=C+17
+    dvUpdate.innerHTML="Land is now trading at "+Y+" bushels per acre."
+}
+function endGame() 
+{
+    // 860 stuff
+}
+function main()
+{
+    init()
+    report()
+    update()
+}
+</script>    
+</head>
+<body>
+<h1>Hammurabi</h1>
+<h2>Try your hand at governing ancient Sumeria</h2>
+<div id="dvReport"></div>
+<div id="dvUpdate"></div>
+</body>
+</html>
