@@ -101,7 +101,7 @@ function plantSeed() {
     if (D<0) quitSteward()
     if (D<=A) {
         if (Math.floor(D/2)<=S) { // Enough grain for seeds?
-            if (D<(10*P)) {       // Enough people to tend the fields? 
+            if (D<=(10*P)) {       // Enough people to tend the fields? NB: Flor change to <= 
                                   // NB: Each person does 10 acres
                 S=S-Math.floor(D/2) // NB: Seeding an acre requires 1/2 bushel
                 updateKingdom()
@@ -118,17 +118,16 @@ function plantSeed() {
 function quitSteward() {
     dvError.innerHTML="Hammurabi, I cannot do what you wish."+"<br>"
     dvError.innerHTML+="Get yourself another steward!!!!!"+"<br>"
-    dvError.innerHTML+="So long for now."+"<br>"
     endGame()
 }
 
 function giveFinalReport() {
-    dvReport.innerHTML ="In your 10-year term of office, "+P1+"% of the"+"<br>"
+    dvReport.innerHTML ="In your 10-year term of office, "+P1.toFixed(2)+"% of the"+"<br>"
     dvReport.innerHTML+="population starved per year on the average, i.e., a total of"+"<br>"
-    dvReport.innerHTML+=D1+" people died!!"+"<br>"
+    dvReport.innerHTML+=D1.toFixed(2)+" people died!!"+"<br>"
     L=A/P
     dvReport.innerHTML+="You started with 10 acres per person and ended with"+"<br>"
-    dvReport.innerHTML+=L+"acres per person."+"<br><br>"
+    dvReport.innerHTML+=L.toFixed(2)+" acres per person."+"<br><br>"
     if (P1>33) doImpeach()
     if (L<7) doImpeach()
     if (P1>10 || L<9) {
@@ -179,9 +178,9 @@ function updateKingdom() {
     if (P>C) { // Starve enough for impeachment?
         D=P-C // Deaths
         if (D<=(.45*P)) {
-            P1=((Z-1)*P1+D*100/P)/Z // NOTE:???
+            P1=((Z-1)*P1+D*100/P)/Z // NOTE:Average people that died per year
             P=C
-            D1=D1+D
+            D1=D1+D // Note: Total deaths
             doReport()
         } else {
             dvError.innerHTML="You starved "+D+" people in one year!!!"+"<br>"
