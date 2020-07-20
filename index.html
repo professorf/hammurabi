@@ -132,16 +132,16 @@ function giveFinalReport() {
     if (P1>33) doImpeach()
     if (L<7) doImpeach()
     if (P1>10 || L<9) {
-        dvReport.innerHTML ="Your heavy-handed performance smacks of Nero and Ivan IV"+"<br>"
+        dvReport.innerHTML+="Your heavy-handed performance smacks of Nero and Ivan IV"+"<br>"
         dvReport.innerHTML+="The people (remaining) find you an unpleasand ruler, and,"+"<br>"
         dvReport.innerHTML+="frankly hate your guts!!"+"<br>"
     } else if (P1>3 || L<10) {
-        dvReport.innerHTML ="Your performance could have been somewhat better, but"+"<br>"
+        dvReport.innerHTML+="Your performance could have been somewhat better, but"+"<br>"
         dvReport.innerHTML+="really wasn't too bad at all. "+Math.floor(P*.8*Math.random())+" people"+"<br>"        
         dvReport.innerHTML+="dearly like to see you assasinated but we all have our"+"<br>"
         dvReport.innerHTML+="trivial problems."+"<br>"
     } else {
-        dvReport.innerHTML ="A fantastic performance!!! Charlemagne, Disraeli, and"+"<br>"
+        dvReport.innerHTML+="A fantastic performance!!! Charlemagne, Disraeli, and"+"<br>"
         dvReport.innerHTML+="Jefferson combined could not have done better!"+"<br>"
     }
     endGame()
