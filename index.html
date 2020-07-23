@@ -48,7 +48,13 @@ function doReport()
     dvReport.innerHTML+="Land is now trading at "+Y+" bushels per acre."
 
     dvAcres.style.display="block"
-
+//
+// Flor Visual Additions
+//
+    tdTrade.innerHTML=Y
+    tdAcres.innerHTML=A
+    tdPeeps.innerHTML=P
+    tdGrain.innerHTML=S
     if (Z==11) giveFinalReport()
 }
 function update() {
@@ -67,6 +73,8 @@ function buyAcres() {
         C=0
         dvError.innerHTML=""
         dvBushels.style.display="block"
+        tdAcres.innerHTML=A
+        tdGrain.innerHTML=S
     } else {
         dvError.innerHTML="Hammurabi, think again. You only have only "+S+" bushels of grain. Try again."
     }
@@ -80,6 +88,8 @@ function sellAcres() {
         C=0
         dvError.innerHTML=""
         dvBushels.style.display="block"
+        tdAcres.innerHTML=A
+        tdGrain.innerHTML=S
     } else {
         dvError.innerHTML="Hammurabi, think again. You own only "+A+" acres. Try again."
     }
@@ -92,6 +102,7 @@ function feedPeople() {
         C=1
         dvError.innerHTML=""
         dvPlant.style.display="block"
+        tdGrain.innerHTML=S
     } else {
         dvError.innerHTML="Hammurabi, think again. You have only "+S+" bushels of grain. Try again."
     }
@@ -104,6 +115,7 @@ function plantSeed() {
             if (D<=(10*P)) {       // Enough people to tend the fields? NB: Flor change to <= 
                                   // NB: Each person does 10 acres
                 S=S-Math.floor(D/2) // NB: Seeding an acre requires 1/2 bushel
+                tdGrain.innerHTML=S
                 updateKingdom()
             } else {
                 dvError.innerHTML="Hammurabi, think again. But you only have "+P+" People to tend the fields. Try again."
@@ -194,12 +206,20 @@ function updateKingdom() {
 function chance() {
     C=Math.floor(Math.random()*5)+1
 }
-</script>    
+</script>
+<style>
+    td {text-align:center}
+</style>    
 </head>
 <body>
 <h1>Hammurabi</h1>
 <h2>Try your hand at governing ancient Sumeria</h2>
+
 <div id="dvReport"></div>
+<table>
+    <tr><th>Trade $</th><th>Acres</th><th>People</th><th>Grain</th></tr>
+    <tr><td id="tdTrade"></td><td id="tdAcres">0</td><td id="tdPeeps">0</td><td id="tdGrain">0</td></tr>
+</table>
 <div id="dvAcres">
 How many acres do you wish to buy/sell? <input id="inQA">
 <input type="button" value="Buy" onclick="buyAcres()">
